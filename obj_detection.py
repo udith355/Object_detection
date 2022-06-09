@@ -2,7 +2,6 @@ import cv2 as cv
 import imutils
 from imutils import paths
 import numpy as np
-import numpy as np
 
 #
 # input sample video file name
@@ -27,10 +26,10 @@ NMS_THRESHOLD = 0.5
 
 # colors for object detected
 COLORS = [(0, 255, 255), (255, 255, 0), (0, 255, 0), (255, 0, 0)]
-GREEN = (0, 255, 0)
-RED = (0, 0, 255)
-PINK = (147, 20, 255)
-ORANGE = (0, 69, 255)
+# GREEN = (0, 255, 0)
+# RED = (0, 0, 255)
+# PINK = (147, 20, 255)
+# ORANGE = (0, 69, 255)
 fonts = cv.FONT_HERSHEY_SIMPLEX
 
 # The height of the vehical
@@ -145,7 +144,7 @@ def start_processing():
     x2 = int(width_zone / 2) + int(width_zone / 4)-200
     x3 = int(width_zone) - 450
     x4 = 0 + 450
-    y1 = int(height_zone - 70)
+    y1 = int(height_zone - 50)
     y2 = int(height_zone - 5)
     ym = (y1 + y2) / 2
 
