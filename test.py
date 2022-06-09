@@ -4,7 +4,7 @@ import numpy as np
 #
 # input sample video file name
 #
-file_name = 'test3.mp4'
+file_name = 'test5.mp4'
 
 #
 # Press Q to close the window
@@ -47,7 +47,7 @@ with open("classes.txt", "r") as f:
 
 #  setttng up opencv net
 def setUpOpenCVNet():
-    yoloNet = cv.dnn.readNet('yolov3-tiny.weights', 'yolov3-tiny.cfg')
+    yoloNet = cv.dnn.readNet('yolov4-tiny.weights', 'yolov4-tiny.cfg')
     yoloNet.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
     yoloNet.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA_FP16)
 

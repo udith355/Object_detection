@@ -12,8 +12,8 @@ import numpy as np
 # tikak hari
 # file_name='car_race.mp4'
 # hari
-# file_name='test6.mp4'
-file_name = 'test5.mp4'
+file_name='test6.mp4'
+# file_name = 'test5.mp4'
 
 
 c = 0
@@ -79,6 +79,22 @@ def distance_to_camera(knownWidth, focalLength, perWidth):
     # compute and return the distance from the maker to the camera
     return (knownWidth * focalLength) / perWidth
 
+def draw_text(img, text,
+          font=cv.FONT_HERSHEY_PLAIN,
+          pos=(0, 0),
+          font_scale=int(1.0),
+          font_thickness=2,
+          text_color=(255, 0, 0),
+          text_color_bg=(0, 255, 0)
+          ):
+
+    x, y = pos
+    text_size, _ = cv.getTextSize(text, font, font_scale, font_thickness)
+    text_w, text_h = text_size
+    cv.rectangle(img, pos, (x + text_w, y + text_h), text_color_bg, -1)
+    cv.putText(img, text, (x, y + text_h + font_scale - 1), font, font_scale, text_color, font_thickness)
+    return text_size
+
 
 # Detect objects and show identified object
 def ObjectDetector(image):
@@ -88,7 +104,9 @@ def ObjectDetector(image):
         label = "%s" % (class_names[classid])
 
         cv.rectangle(image, box, color, 2)
-        cv.putText(image, label, (box[0], box[1] - 10), fonts, 0.5, color, 2)
+        draw_text(image, label, cv.FONT_HERSHEY_PLAIN, (box[0], box[1] - 20), 2, 2)
+
+        # cv.putText(image, label, (box[0], box[1] - 10), fonts, 0.5, color, 2)
     # ===========================================================================================
     marker = find_marker(image)
     KNOWN_DISTANCE = 16.0
@@ -109,9 +127,11 @@ def ObjectDetector(image):
 
             if (apx_distance) <= 350:
                 if (mid_x) > (100) and (mid_x) < (400):
-                    cv.putText(image, 'WARNING!!!'.format(apx_distance=apx_distance),
-                               (box[0] + 10, box[1] + 50), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 255), 2)
-                    cv.rectangle(image, box, (0, 0, 255), 2)
+                    cv.putText(image, 'WARNING!!!',
+                               (20, 100), cv.FONT_HERSHEY_SIMPLEX, 3.0, (0, 0, 255), 7)
+                    draw_text(image, label, cv.FONT_HERSHEY_PLAIN, (box[0], box[1] - 20), 2, 2, (54, 220, 209),
+                              (0, 0, 255))
+                    cv.rectangle(image, box, (0, 0, 255), 3)
 
 
 
@@ -124,12 +144,12 @@ def start_processing():
     width_zone = camera.get(3)
     height_zone = camera.get(4)
     # print("height:", height_zone, "width:", width_zone)
-    x1 = int(width_zone / 2) - int(width_zone / 4)
-    x2 = int(width_zone / 2) + int(width_zone / 4)
-    x3 = int(width_zone) - 20
-    x4 = 0 + 20
-    y1 = int(height_zone - 100)
-    y2 = int(height_zone - 20)
+    x1 = int(width_zone / 2) - int(width_zone / 4)+200
+    x2 = int(width_zone / 2) + int(width_zone / 4)-200
+    x3 = int(width_zone) - 450
+    x4 = 0 + 450
+    y1 = int(height_zone - 70)
+    y2 = int(height_zone - 5)
     ym = (y1 + y2) / 2
 
     # number = 0
