@@ -15,6 +15,10 @@ import numpy as np
 # file_name='test6.mp4'
 file_name = 'test5.mp4'
 
+
+c = 0
+
+
 #
 # Press Q to close the window
 #
@@ -117,9 +121,27 @@ def start_processing():
     camera = cv.VideoCapture('sample_videos/' + file_name)
     counter = 0
     capture = False
+    width_zone = camera.get(3)
+    height_zone = camera.get(4)
+    # print("height:", height_zone, "width:", width_zone)
+    x1 = int(width_zone / 2) - int(width_zone / 4)
+    x2 = int(width_zone / 2) + int(width_zone / 4)
+    x3 = int(width_zone) - 20
+    x4 = 0 + 20
+    y1 = int(height_zone - 100)
+    y2 = int(height_zone - 20)
+    ym = (y1 + y2) / 2
+
     # number = 0
     while True:
+        # print(height, width)
+        # 432,768
+        # roi = img[0:432,225:650]
+
         ret, frame = camera.read()
+
+        pts = np.array([[x4, y2], [x1, y1], [x2, y1], [x3, y2]])
+        cv.polylines(frame, [pts], True, (0, 255, 255), 2)
 
         orignal = frame.copy()
 
