@@ -8,13 +8,10 @@ import numpy as np
 # input sample video file name
 #
 
-# file_name = 'vtest.avi'
-# tikak hari
-# file_name='car_race.mp4'
-# hari
-file_name='test6.mp4'
-# file_name = 'test5.mp4'
 
+# file_name='test6.mp4'
+file_name = 'test5.mp4'
+# file_name = 'test4.mp4'
 
 c = 0
 
@@ -78,7 +75,7 @@ def find_marker(image):
 def distance_to_camera(knownWidth, focalLength, perWidth):
     # compute and return the distance from the maker to the camera
     return (knownWidth * focalLength) / perWidth
-
+# Color the background
 def draw_text(img, text,
           font=cv.FONT_HERSHEY_PLAIN,
           pos=(0, 0),
@@ -152,11 +149,7 @@ def start_processing():
     y2 = int(height_zone - 5)
     ym = (y1 + y2) / 2
 
-    # number = 0
     while True:
-        # print(height, width)
-        # 432,768
-        # roi = img[0:432,225:650]
 
         ret, frame = camera.read()
 
