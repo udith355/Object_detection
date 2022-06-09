@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71f205e-6224-428e-9729-581cbb47750f" name="Changes" comment="">
+    <list default="true" id="e71f205e-6224-428e-9729-581cbb47750f" name="Changes" comment="dangger zone adjusted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/focalLength.txt" beforeDir="false" afterPath="$PROJECT_DIR$/focalLength_.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/obj_detection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +91,14 @@
       <option name="presentableId" value="Default" />
       <updated>1654774295059</updated>
     </task>
+    <task id="LOCAL-00001" summary="dangger zone adjusted">
+      <created>1654793952129</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654793952129</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,5 +111,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dangger zone adjusted" />
+    <option name="LAST_COMMIT_MESSAGE" value="dangger zone adjusted" />
   </component>
 </project>

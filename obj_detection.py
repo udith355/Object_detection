@@ -8,12 +8,11 @@ import numpy as np
 #
 
 
-# file_name='test6.mp4'
-file_name = 'test5.mp4'
+file_name='test6.mp4'
+# file_name = 'test5.mp4'
 # file_name = 'test4.mp4'
 
 c = 0
-
 
 #
 # Press Q to close the window
@@ -21,7 +20,7 @@ c = 0
 
 
 # Threshold values
-CONFIDENCE_THRESHOLD = 0.7
+CONFIDENCE_THRESHOLD = 0.6
 NMS_THRESHOLD = 0.5
 
 # colors for object detected
@@ -45,7 +44,7 @@ with open("classes.txt", "r") as f:
     class_names = [cname.strip() for cname in f.readlines()]
 
 
-#  setttng up opencv net
+# setting up opencv net
 def setUpOpenCVNet():
     yoloNet = cv.dnn.readNet('yolov4-tiny.weights', 'yolov4-tiny.cfg')
     yoloNet.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
@@ -53,7 +52,7 @@ def setUpOpenCVNet():
 
     model = cv.dnn_DetectionModel(yoloNet)
     model.setInputParams(size=(416, 416), scale=1 / 255, swapRB=True)
-    return yoloNet, model
+    return model
 
 
 def find_marker(image):
@@ -74,16 +73,17 @@ def find_marker(image):
 def distance_to_camera(knownWidth, focalLength, perWidth):
     # compute and return the distance from the maker to the camera
     return (knownWidth * focalLength) / perWidth
+
+
 # Color the background
 def draw_text(img, text,
-          font=cv.FONT_HERSHEY_PLAIN,
-          pos=(0, 0),
-          font_scale=int(1.0),
-          font_thickness=2,
-          text_color=(255, 0, 0),
-          text_color_bg=(0, 255, 0)
-          ):
-
+              font=cv.FONT_HERSHEY_PLAIN,
+              pos=(0, 0),
+              font_scale=int(1.0),
+              font_thickness=2,
+              text_color=(255, 0, 0),
+              text_color_bg=(0, 255, 0)
+              ):
     x, y = pos
     text_size, _ = cv.getTextSize(text, font, font_scale, font_thickness)
     text_w, text_h = text_size
@@ -111,10 +111,9 @@ def ObjectDetector(image):
 
     # =======================================================================================================
     for i, b in enumerate(boxes):
-
         if classes[i] == 2 or classes[i] == 7 or classes[i] == 8:
-            if scores[i] >= 0.6:
-                apx_distance = distance_to_camera(KNOWN_WIDTH, focalLength, abs(boxes[i][1] - boxes[i][3]))
+            if scores[i] >= CONFIDENCE_THRESHOLD:
+                # apx_distance = distance_to_camera(KNOWN_WIDTH, focalLength, abs(boxes[i][1] - boxes[i][3]))
                 mid_x = (boxes[i][1] + boxes[i][3]) / 2
 
                 mid_y = (boxes[i][0] + boxes[i][2]) / 2
@@ -130,23 +129,19 @@ def ObjectDetector(image):
                     cv.rectangle(image, box, (0, 0, 255), 3)
 
 
-
-
 # capture and call needed functions
 def start_processing():
     camera = cv.VideoCapture('sample_videos/' + file_name)
-    counter = 0
-    capture = False
+
+    #draw the danger zone infront of the dashcam
     width_zone = camera.get(3)
     height_zone = camera.get(4)
-    # print("height:", height_zone, "width:", width_zone)
-    x1 = int(width_zone / 2) - int(width_zone / 4)+200
-    x2 = int(width_zone / 2) + int(width_zone / 4)-200
+    x1 = int(width_zone / 2) - int(width_zone / 4) + 180
+    x2 = int(width_zone / 2) + int(width_zone / 4) - 180
     x3 = int(width_zone) - 450
     x4 = 0 + 450
     y1 = int(height_zone - 50)
     y2 = int(height_zone - 5)
-    ym = (y1 + y2) / 2
 
     while True:
 
@@ -155,10 +150,8 @@ def start_processing():
         pts = np.array([[x4, y2], [x1, y1], [x2, y1], [x3, y2]])
         cv.polylines(frame, [pts], True, (0, 255, 255), 2)
 
-        orignal = frame.copy()
 
         ObjectDetector(frame)
-
 
         cv.imshow('frame', frame)
         key = cv.waitKey(1)
@@ -168,5 +161,5 @@ def start_processing():
     cv.destroyAllWindows()
 
 
-yoloNet, model = setUpOpenCVNet();
+model = setUpOpenCVNet();
 start_processing()
