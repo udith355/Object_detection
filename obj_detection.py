@@ -61,8 +61,7 @@ def find_marker(image):
     gray = cv.GaussianBlur(gray, (5, 5), 0)
 
     edged = cv.Canny(gray, 35, 125)
-    # find the contours in the edged image and keep the largest one;
-    # we'll assume that this is our piece of paper in the image
+    # find the contours in the edged image and keep the largest one
     cnts = cv.findContours(edged.copy(), cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
     c = max(cnts, key=cv.contourArea)
@@ -102,7 +101,6 @@ def ObjectDetector(image):
         cv.rectangle(image, box, color, 2)
         draw_text(image, label, cv.FONT_HERSHEY_PLAIN, (box[0], box[1] - 20), 2, 2)
 
-        # cv.putText(image, label, (box[0], box[1] - 10), fonts, 0.5, color, 2)
     # ===========================================================================================
     marker = find_marker(image)
     KNOWN_DISTANCE = 16.0
