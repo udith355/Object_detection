@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e71f205e-6224-428e-9729-581cbb47750f" name="Changes" comment="dangger zone adjusted">
+    <list default="true" id="e71f205e-6224-428e-9729-581cbb47750f" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/focalLength.txt" beforeDir="false" afterPath="$PROJECT_DIR$/focalLength_.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj_detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/obj_detection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +97,21 @@
       <option name="project" value="LOCAL" />
       <updated>1654793952129</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="danger zone adjusted">
+      <created>1654796977073</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654796977073</updated>
+    </task>
+    <task id="LOCAL-00003" summary="minor changes">
+      <created>1654797140773</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1654797140773</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -114,6 +127,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dangger zone adjusted" />
-    <option name="LAST_COMMIT_MESSAGE" value="dangger zone adjusted" />
+    <MESSAGE value="danger zone adjusted" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
 </project>

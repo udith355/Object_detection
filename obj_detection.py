@@ -12,7 +12,6 @@ file_name='test6.mp4'
 # file_name = 'test5.mp4'
 # file_name = 'test4.mp4'
 
-c = 0
 
 #
 # Press Q to close the window
@@ -114,9 +113,7 @@ def ObjectDetector(image):
                 # apx_distance = distance_to_camera(KNOWN_WIDTH, focalLength, abs(boxes[i][1] - boxes[i][3]))
                 mid_x = (boxes[i][1] + boxes[i][3]) / 2
 
-                mid_y = (boxes[i][0] + boxes[i][2]) / 2
-
-                apx_distance = round(((1 - (boxes[i][3] - boxes[i][1]))), 1)
+                apx_distance = round(((0 - (boxes[i][3] - boxes[i][1]))), 1)
 
             if (apx_distance) <= 350:
                 if (mid_x) > (100) and (mid_x) < (400):
